@@ -1,0 +1,579 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="Sonelgaz@localhost">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="4.4">
+    <root id="1"/>
+    <schema id="2" parent="1" name="Sonelgaz">
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="3" parent="1" name="information_schema"/>
+    <schema id="4" parent="1" name="mydb"/>
+    <schema id="5" parent="1" name="mysql"/>
+    <schema id="6" parent="1" name="performance_schema"/>
+    <schema id="7" parent="1" name="test"/>
+    <table id="8" parent="2" name="Adresse"/>
+    <table id="9" parent="2" name="CarteBancaire"/>
+    <table id="10" parent="2" name="Commune"/>
+    <table id="11" parent="2" name="Commune_Zone"/>
+    <table id="12" parent="2" name="Compteur"/>
+    <table id="13" parent="2" name="Employe"/>
+    <table id="14" parent="2" name="Facture"/>
+    <table id="15" parent="2" name="Index"/>
+    <table id="16" parent="2" name="Raccordement"/>
+    <table id="17" parent="2" name="Reclamation"/>
+    <table id="18" parent="2" name="Remise"/>
+    <table id="19" parent="2" name="Tarif"/>
+    <table id="20" parent="2" name="Tranceh"/>
+    <table id="21" parent="2" name="User"/>
+    <table id="22" parent="2" name="Wilaya"/>
+    <table id="23" parent="2" name="Zone"/>
+    <column id="24" parent="8" name="idAdresse">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="25" parent="8" name="Rue">
+      <Position>2</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="26" parent="8" name="Num">
+      <Position>3</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="27" parent="8" name="idZone">
+      <Position>4</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="28" parent="8" name="idUser">
+      <Position>5</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="29" parent="8" name="fk_Adresse_User1">
+      <ColNames>idUser</ColNames>
+    </index>
+    <index id="30" parent="8" name="fk_Adresse_Zone2">
+      <ColNames>idZone</ColNames>
+    </index>
+    <key id="31" parent="8" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>idAdresse</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="32" parent="8" name="fk_Adresse_Zone2">
+      <ColNames>idZone</ColNames>
+      <RefSchemaName>Sonelgaz</RefSchemaName>
+      <RefTableName>Zone</RefTableName>
+      <RefColNames>idZone</RefColNames>
+    </foreign-key>
+    <foreign-key id="33" parent="8" name="fk_Adresse_User1">
+      <ColNames>idUser</ColNames>
+      <RefSchemaName>Sonelgaz</RefSchemaName>
+      <RefTableName>User</RefTableName>
+      <RefColNames>idUser</RefColNames>
+    </foreign-key>
+    <column id="34" parent="9" name="idCarte">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="35" parent="9" name="NumeroCarte">
+      <Position>2</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="36" parent="9" name="PIN">
+      <Position>3</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="37" parent="9" name="Montant">
+      <Position>4</Position>
+      <DataType>float|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;100000&apos;</DefaultExpression>
+    </column>
+    <column id="38" parent="9" name="idUser">
+      <Position>5</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="39" parent="9" name="fk_CarteBancaire_User1">
+      <ColNames>idUser</ColNames>
+    </index>
+    <key id="40" parent="9" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>idCarte</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="41" parent="9" name="fk_CarteBancaire_User1">
+      <ColNames>idUser</ColNames>
+      <RefSchemaName>Sonelgaz</RefSchemaName>
+      <RefTableName>User</RefTableName>
+      <RefColNames>idUser</RefColNames>
+    </foreign-key>
+    <column id="42" parent="10" name="idCommune">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="43" parent="10" name="Nom">
+      <Position>2</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="44" parent="10" name="CodePostal">
+      <Position>3</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="45" parent="10" name="Wilaya_idWilaya">
+      <Position>4</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="46" parent="10" name="fk_Commune_Wilaya2">
+      <ColNames>Wilaya_idWilaya</ColNames>
+    </index>
+    <key id="47" parent="10" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>idCommune</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="48" parent="10" name="fk_Commune_Wilaya2">
+      <ColNames>Wilaya_idWilaya</ColNames>
+      <RefSchemaName>Sonelgaz</RefSchemaName>
+      <RefTableName>Wilaya</RefTableName>
+      <RefColNames>idWilaya</RefColNames>
+    </foreign-key>
+    <column id="49" parent="11" name="idCommune">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="50" parent="11" name="Zone_idZone">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="51" parent="11" name="fk_Commune_has_Zone_Zone1">
+      <ColNames>Zone_idZone</ColNames>
+    </index>
+    <key id="52" parent="11" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>idCommune
+Zone_idZone</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="53" parent="11" name="fk_Commune_has_Zone_Commune1">
+      <ColNames>idCommune</ColNames>
+      <RefSchemaName>Sonelgaz</RefSchemaName>
+      <RefTableName>Commune</RefTableName>
+      <RefColNames>idCommune</RefColNames>
+    </foreign-key>
+    <foreign-key id="54" parent="11" name="fk_Commune_has_Zone_Zone1">
+      <ColNames>Zone_idZone</ColNames>
+      <RefSchemaName>Sonelgaz</RefSchemaName>
+      <RefTableName>Zone</RefTableName>
+      <RefColNames>idZone</RefColNames>
+    </foreign-key>
+    <column id="55" parent="12" name="Matricule">
+      <Position>1</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="56" parent="12" name="Type">
+      <Position>2</Position>
+      <DataType>enum(&apos;G&apos;, &apos;E&apos;)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="57" parent="12" name="idAdresse">
+      <Position>3</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="58" parent="12" name="idTarif">
+      <Position>4</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="59" parent="12" name="fk_Compteur_Adresse1">
+      <ColNames>idAdresse</ColNames>
+    </index>
+    <index id="60" parent="12" name="fk_Compteur_Tarif1">
+      <ColNames>idTarif</ColNames>
+    </index>
+    <key id="61" parent="12" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>Matricule</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="62" parent="12" name="fk_Compteur_Adresse1">
+      <ColNames>idAdresse</ColNames>
+      <RefSchemaName>Sonelgaz</RefSchemaName>
+      <RefTableName>Adresse</RefTableName>
+      <RefColNames>idAdresse</RefColNames>
+    </foreign-key>
+    <foreign-key id="63" parent="12" name="fk_Compteur_Tarif1">
+      <ColNames>idTarif</ColNames>
+      <RefSchemaName>Sonelgaz</RefSchemaName>
+      <RefTableName>Tarif</RefTableName>
+      <RefColNames>idTarif</RefColNames>
+    </foreign-key>
+    <column id="64" parent="13" name="User_idUser">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="65" parent="13" name="Zone_idZone">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="66" parent="13" name="fk_Employe_Zone1">
+      <ColNames>Zone_idZone</ColNames>
+    </index>
+    <key id="67" parent="13" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>User_idUser</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="68" parent="13" name="fk_Employe_User1">
+      <ColNames>User_idUser</ColNames>
+      <RefSchemaName>Sonelgaz</RefSchemaName>
+      <RefTableName>User</RefTableName>
+      <RefColNames>idUser</RefColNames>
+    </foreign-key>
+    <foreign-key id="69" parent="13" name="fk_Employe_Zone1">
+      <ColNames>Zone_idZone</ColNames>
+      <RefSchemaName>Sonelgaz</RefSchemaName>
+      <RefTableName>Zone</RefTableName>
+      <RefColNames>idZone</RefColNames>
+    </foreign-key>
+    <column id="70" parent="14" name="idFacture">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="71" parent="14" name="Date">
+      <Position>2</Position>
+      <DataType>date|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="72" parent="14" name="Montant">
+      <Position>3</Position>
+      <DataType>float|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="73" parent="14" name="idAdresse">
+      <Position>4</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="74" parent="14" name="Paye">
+      <Position>5</Position>
+      <DataType>float|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="75" parent="14" name="CreditAA">
+      <Position>6</Position>
+      <DataType>float|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="76" parent="14" name="fk_Facture_Adresse1">
+      <ColNames>idAdresse</ColNames>
+    </index>
+    <key id="77" parent="14" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>idFacture</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="78" parent="14" name="fk_Facture_Adresse1">
+      <ColNames>idAdresse</ColNames>
+      <RefSchemaName>Sonelgaz</RefSchemaName>
+      <RefTableName>Adresse</RefTableName>
+      <RefColNames>idAdresse</RefColNames>
+    </foreign-key>
+    <column id="79" parent="15" name="idIndex">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="80" parent="15" name="Date">
+      <Position>2</Position>
+      <DataType>date|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="81" parent="15" name="Releve">
+      <Position>3</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="82" parent="15" name="Matricule">
+      <Position>4</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="83" parent="15" name="fk_Index_Compteur1">
+      <ColNames>Matricule</ColNames>
+    </index>
+    <key id="84" parent="15" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>idIndex</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="85" parent="15" name="fk_Index_Compteur1">
+      <ColNames>Matricule</ColNames>
+      <RefSchemaName>Sonelgaz</RefSchemaName>
+      <RefTableName>Compteur</RefTableName>
+      <RefColNames>Matricule</RefColNames>
+    </foreign-key>
+    <column id="86" parent="16" name="idUser">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="87" parent="16" name="idAdresse">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="88" parent="16" name="Type">
+      <Position>3</Position>
+      <DataType>enum(&apos;G&apos;, &apos;E&apos;)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="89" parent="16" name="fk_Client_has_Adresse_Adresse1">
+      <ColNames>idAdresse</ColNames>
+    </index>
+    <key id="90" parent="16" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>idUser
+idAdresse</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="91" parent="16" name="fk_Raccordement_User1">
+      <ColNames>idUser</ColNames>
+      <RefSchemaName>Sonelgaz</RefSchemaName>
+      <RefTableName>User</RefTableName>
+      <RefColNames>idUser</RefColNames>
+    </foreign-key>
+    <foreign-key id="92" parent="16" name="fk_Client_has_Adresse_Adresse1">
+      <ColNames>idAdresse</ColNames>
+      <RefSchemaName>Sonelgaz</RefSchemaName>
+      <RefTableName>Adresse</RefTableName>
+      <RefColNames>idAdresse</RefColNames>
+    </foreign-key>
+    <column id="93" parent="17" name="idReclamation">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="94" parent="17" name="Type">
+      <Position>2</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="95" parent="17" name="Texte">
+      <Position>3</Position>
+      <DataType>longtext|0</DataType>
+    </column>
+    <column id="96" parent="17" name="PriseCharge">
+      <Position>4</Position>
+      <DataType>enum(&apos;O&apos;, &apos;N&apos;)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;N&apos;</DefaultExpression>
+    </column>
+    <column id="97" parent="17" name="User_idUser">
+      <Position>5</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="98" parent="17" name="fk_Reclamation_User1">
+      <ColNames>User_idUser</ColNames>
+    </index>
+    <key id="99" parent="17" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>idReclamation</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="100" parent="17" name="fk_Reclamation_User1">
+      <ColNames>User_idUser</ColNames>
+      <RefSchemaName>Sonelgaz</RefSchemaName>
+      <RefTableName>User</RefTableName>
+      <RefColNames>idUser</RefColNames>
+    </foreign-key>
+    <column id="101" parent="18" name="Type">
+      <Position>1</Position>
+      <DataType>enum(&apos;Ad&apos;, &apos;A&apos;, &apos;AT&apos;, &apos;E&apos;)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="102" parent="18" name="Taux">
+      <Position>2</Position>
+      <DataType>float|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="103" parent="18" name="Date">
+      <Position>3</Position>
+      <DataType>date|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="104" parent="19" name="idTarif">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="105" parent="19" name="Code">
+      <Position>2</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="106" parent="19" name="Coef">
+      <Position>3</Position>
+      <DataType>float|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="107" parent="19" name="Date">
+      <Position>4</Position>
+      <DataType>date|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="108" parent="19" name="DroitFixe">
+      <Position>5</Position>
+      <DataType>float|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="109" parent="19" name="TaxeHabitation">
+      <Position>6</Position>
+      <DataType>float|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="110" parent="19" name="Timbre">
+      <Position>7</Position>
+      <DataType>float|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="111" parent="19" name="PrimeFixe">
+      <Position>8</Position>
+      <DataType>float|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="112" parent="19" name="TVA">
+      <Position>9</Position>
+      <DataType>float|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="113" parent="19" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>idTarif</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="114" parent="20" name="Tranceh">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="115" parent="20" name="PrixUnit">
+      <Position>2</Position>
+      <DataType>float|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="116" parent="20" name="Quantite">
+      <Position>3</Position>
+      <DataType>float|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="117" parent="20" name="idTarif">
+      <Position>4</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="118" parent="20" name="fk_Tranceh_Tarif1">
+      <ColNames>idTarif</ColNames>
+    </index>
+    <foreign-key id="119" parent="20" name="fk_Tranceh_Tarif1">
+      <ColNames>idTarif</ColNames>
+      <RefSchemaName>Sonelgaz</RefSchemaName>
+      <RefTableName>Tarif</RefTableName>
+      <RefColNames>idTarif</RefColNames>
+    </foreign-key>
+    <column id="120" parent="21" name="idUser">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="121" parent="21" name="Nom">
+      <Position>2</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="122" parent="21" name="Prenom">
+      <Position>3</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="123" parent="21" name="DateNaissance">
+      <Position>4</Position>
+      <DataType>date|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="124" parent="21" name="E-mail">
+      <Position>5</Position>
+      <DataType>varchar(45)|0</DataType>
+    </column>
+    <column id="125" parent="21" name="Pseudo">
+      <Position>6</Position>
+      <DataType>varchar(45)|0</DataType>
+    </column>
+    <column id="126" parent="21" name="MotPasse">
+      <Position>7</Position>
+      <DataType>varchar(45)|0</DataType>
+    </column>
+    <column id="127" parent="21" name="UserType">
+      <Position>8</Position>
+      <DataType>enum(&apos;Ad&apos;, &apos;A&apos;, &apos;AT&apos;, &apos;C&apos;, &apos;E&apos;)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="128" parent="21" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>idUser</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="129" parent="22" name="idWilaya">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="130" parent="22" name="Nom">
+      <Position>2</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="131" parent="22" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>idWilaya</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="132" parent="23" name="idZone">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="133" parent="23" name="NomAgence">
+      <Position>2</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="134" parent="23" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>idZone</ColNames>
+      <Primary>1</Primary>
+    </key>
+  </database-model>
+</dataSource>

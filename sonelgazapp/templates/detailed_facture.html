@@ -1,0 +1,231 @@
+{% extends 'home.html' %}
+
+
+{% block content %}
+
+    <div class="box">
+        <div class="box-header with-border">
+            <h3 class="box-title"><i class="fa fa-info-circle"></i>
+                <span>Info Facture</span></h3>
+
+            <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip"
+                        title="Collapse">
+                    <i class="fa fa-minus"></i></button>
+
+            </div>
+        </div>
+        <div class="box-body">
+            <ul>
+                <li><b>Ref. Facture : </b>{{ facture.pk }}</li>
+                <li><b>Date : </b>{{ facture.date }}</li>
+                <li><b>Adresse : </b>{{ facture.idaddress }}</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="box">
+        <div class="box-header with-border">
+            <h3 class="box-title"><i class="fa fa-info-circle"></i>
+                <span>Consomation</span></h3>
+
+            <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip"
+                        title="Collapse">
+                    <i class="fa fa-minus"></i></button>
+
+            </div>
+        </div>
+        <div class="box-body">
+            <table class="table table-bordered" >
+                <tr>
+                    <th rowspan="2" style="text-align: center; vertical-align: middle;
+                     border-color: cadetblue; background-color: burlywood ">Tarif</th>
+                    <th rowspan="2" style="text-align: center; vertical-align: middle;
+                        border-color: cadetblue; background-color: burlywood">N° Compteur</th>
+                    <th colspan="3" style="text-align: center; vertical-align: middle;
+                        border-color: cadetblue; background-color: burlywood">Reelevé De Compteur</th>
+                    <th rowspan="2" style="text-align: center; vertical-align: middle;
+                        border-color: cadetblue; background-color: burlywood">Coeff.</th>
+                    <th rowspan="2" style="text-align: center; vertical-align: middle;
+                        border-color: cadetblue; background-color: burlywood">Consommation</th>
+                </tr>
+                <tr>
+                    <th style="text-align: center; vertical-align: middle;
+                        border-color: cadetblue; background-color: burlywood">Index Nouveau</th>
+                    <th style="text-align: center; vertical-align: middle;
+                        border-color: cadetblue; background-color: burlywood">Index Ancien</th>
+                    <th style="text-align: center; vertical-align: middle;
+                        border-color: cadetblue; background-color: burlywood">Difference</th>
+                </tr>
+                <!-- VARS HERE idtarif, idcompteur, last_idx, befor_last_idx, diff, coeff-->
+                {% for c in facture.get_compteurs %}
+                <tr>
+                    <td style="border-color: cadetblue;">{{ c.tarif.code }}</td>
+                    <td style="border-color: cadetblue;">{{ c.matricule }}</td>
+                    <td style="border-color: cadetblue;">{{ c.get_nouv_idx.releve }}</td>
+                    <td style="border-color: cadetblue;">{{ c.get_ans_idx.releve }}</td>
+                    <td style="border-color: cadetblue;">{{ c.get_difference }}</td>
+                    <td style="border-color: cadetblue;">{{ c.tarif.coef }}</td>
+                    <td style="border-color: cadetblue;">{{ c.get_cons }}</td>
+                </tr>
+                {% endfor %}
+
+            </table>
+        </div>
+    </div>
+        <!-- /.box-body -->
+    <div class="box box-warning">
+        <div class="box-header with-border">
+            <h3 class="box-title"><i class="fa fa-info-circle"></i>
+                <span> Details De Facturation (hors taxes)</span></h3>
+
+            <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip"
+                        title="Collapse">
+                    <i class="fa fa-minus"></i></button>
+
+            </div>
+        </div>
+        <div class="box-body">
+            <table class="table table-bordered" >
+                <tr>
+                    <th rowspan="2" style="text-align: center; vertical-align: middle;
+                         border-color: cadetblue; background-color: bisque ">id tarif</th>
+                {% for t in facture.get_biggest_tranche %}
+                    <th colspan="2" style="text-align: center; vertical-align: middle;
+                         border-color: cadetblue; background-color: burlywood ">Tranche N° {{ forloop.counter }}</th>
+                {% endfor %}
+                    <th rowspan="2" style="text-align: center; vertical-align: middle;
+                         border-color: cadetblue; background-color: burlywood ">Primes Fixes</th>
+                </tr>
+                <tr>
+                    {% for t in facture.get_biggest_tranche %}
+                    <th style="text-align: center; vertical-align: middle;
+                         border-color: cadetblue; background-color: burlywood ">Consomation</th>
+                    <th style="text-align: center; vertical-align: middle;
+                         border-color: cadetblue; background-color: burlywood ">Prix Unitaire</th>
+                    {% endfor %}
+                </tr>
+                {% for c in facture.get_compteurs %}
+                    <tr >
+                        <td style="border-color: cadetblue;">{{ c.tarif.code }}</td>
+                        {% for qte, pu in c.get_cons_par_tranche %}
+                            <td style="border-color: cadetblue;">{{ qte }}</td>
+                            <td style="border-color: cadetblue;">{{ pu }}</td>
+                        {% endfor %}
+                        {% for i in c.get_rest %}
+                            <td style="border-color: cadetblue;"></td>
+                            <td style="border-color: cadetblue;"></td>
+                        {% endfor %}
+                            <td style="border-color: cadetblue;">{{ c.tarif.primefixe }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+
+        <!-- /.box-footer-->
+
+
+        </div>
+
+
+    <div class="box box-warning">
+        <div class="box-header with-border">
+            <h3 class="box-title"><i class="fa fa-calculator"></i>
+                <span>  Calcule Des Taxes Et Recapitulation</span></h3>
+
+            <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip"
+                        title="Collapse">
+                    <i class="fa fa-minus"></i></button>
+
+            </div>
+        </div>
+        <div class="box-body">
+            <table class="table table-bordered" >
+                <tr>
+                    <th rowspan="2" style="text-align: center; vertical-align: middle;
+                         border-color: cadetblue; background-color: bisque ">Designation</th>
+                    <th rowspan="2" style="text-align: center; vertical-align: middle;
+                         border-color: cadetblue; background-color: burlywood ">Montant Hors TVA</th>
+                    <th colspan="2" style="text-align: center; vertical-align: middle;
+                         border-color: cadetblue; background-color: burlywood ">TVA</th>
+                    <th rowspan="2" style="text-align: center; vertical-align: middle;
+                         border-color: cadetblue; background-color: burlywood ">Montant Tout Taxes</th>
+                </tr>
+
+                <tr>
+                    <th style="text-align: center; vertical-align: middle;
+                         border-color: cadetblue; background-color: burlywood ">Taux %</th>
+                    <th style="text-align: center; vertical-align: middle;
+                         border-color: cadetblue; background-color: burlywood ">Montant</th>
+                </tr>
+
+                {% for c in facture.get_compteurs %}
+                <tr>
+                    <td style="border-color: cadetblue;">{{ c.matricule }}</td>
+                    <td style="border-color: cadetblue;">{{ c.get_montant_ht }}</td>
+                    <td style="border-color: cadetblue;">{{ c.tarif.tva }}</td>
+                    <td style="border-color: cadetblue;">{{ c.get_tva }}</td>
+                    <td style="border-color: cadetblue;">{{ c.get_montant_tt_taxe }}</td>
+                </tr>
+                {% endfor %}
+                <tr>
+                    <td style="border-color: cadetblue;">Droit Fixe</td>
+                    <td style="border-color: cadetblue;">50.00</td>
+                    <td style="border-color: cadetblue;"></td>
+                    <td style="border-color: cadetblue;"></td>
+                    <td style="border-color: cadetblue;">50.00</td>
+                </tr>
+                <tr>
+                    <td style="border-color: cadetblue;">Taxe Habitation</td>
+                    <td style="border-color: cadetblue;">75.00</td>
+                    <td style="border-color: cadetblue;"></td>
+                    <td style="border-color: cadetblue;"></td>
+                    <td style="border-color: cadetblue;">75.00</td>
+                </tr>
+
+            </table>
+        </div>
+        <div class="box-footer">
+            <b>Contribution Au Coûts Permanants De Systeme : </b>2.60 DA
+        </div>
+        <!-- /.box-footer-->
+    </div>
+
+        <div class="box box-warning">
+        <div class="box-header with-border">
+            <h3 class="box-title"><i class="fa fa-calculator">  </i>
+                <span>  montant</span></h3>
+
+            <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip"
+                        title="Collapse">
+                    <i class="fa fa-minus"></i></button>
+
+            </div>
+        </div>
+        <div class="box-body">
+            <ul>
+                <li>
+                    <b>Montant A Payer TTC </b>(cheque, virment, en ligne) : {{ facture.get_montant }}
+                </li>
+                <li>
+                    <b>Droit De Timbre : </b>16.00
+                </li>
+                <li>
+                    <b>Montant A Payer En Espece : </b> {{ facture.get_montant_espece }}
+                </li>
+            </ul>
+        </div>
+        <div class="box-footer">
+
+
+
+        </div>
+        <!-- /.box-footer-->
+    </div>
+
+
+{% endblock %}

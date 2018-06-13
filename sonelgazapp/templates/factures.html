@@ -1,0 +1,48 @@
+{% extends 'home.html' %}
+
+
+
+
+{% block content %}
+    <!-- Default box -->
+    <div class="box">
+        <div class="box-header with-border">
+            <h3 class="box-title">Choisissez Une Facture</h3>
+
+            <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip"
+                        title="Collapse">
+                    <i class="fa fa-minus"></i></button>
+            </div>
+        </div>
+        <div class="box-body">
+            <table class="table table-bordered">
+                <tr>
+                    <th style="text-align: center; vertical-align: middle;
+                     border-color: darkgray; background-color: lightgray">N° de facture</th>
+                    <th style="text-align: center; vertical-align: middle;
+                     border-color: darkgray; background-color: lightgray">Adresse</th>
+                    <th style="text-align: center; vertical-align: middle;
+                     border-color: darkgray; background-color: lightgray">Date</th>
+                    <th style="text-align: center; vertical-align: middle;
+                     border-color: darkgray; background-color: lightgray">Montant</th>
+                    <th style="text-align: center; vertical-align: middle;
+                     border-color: darkgray; background-color: lightgray">Payé</th>
+                </tr>
+
+                {% for foo in list_fac %}
+                    <tr>
+                        <td style="border-color: darkgray"><a href="/factures/{{ foo.pk }}/">{{ foo.pk }}</a></td>
+                        <td style="border-color: darkgray">{{ foo.idaddress }}</td>
+                        <td style="border-color: darkgray">{{ foo.date }}</td>
+                        <td style="border-color: darkgray">{{ foo.montant }}</td>
+                        <td style="border-color: darkgray">{{ foo.paye }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+        <!-- /.box-body -->
+
+    </div>
+        <!-- /.box -->
+{% endblock %}

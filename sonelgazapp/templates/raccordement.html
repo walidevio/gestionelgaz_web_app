@@ -1,0 +1,38 @@
+{% extends 'home.html' %}
+
+
+{% block content %}
+    <div class="box">
+        <div class="box-header with-border">
+            <h3 class="box-title">Veuillez Remplir Le Formulaire</h3>
+
+            <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip"
+                        title="Collapse">
+                    <i class="fa fa-minus"></i></button>
+            </div>
+        </div>
+        <div class="box-body">
+            <form method="post">
+                {% csrf_token %}
+                <b>Addresse : </b><br><br>
+                <input type="text" name="num" placeholder="Numero"><br><br>
+                <input type="text" name="rue" placeholder="Rue"><br><br>
+                <input type="text" name="codep" placeholder="Code Postal"><br><br>
+                <b>Type : </b>
+                <select name="type">
+                    <option value="G">Gaz</option>
+                    <option value="E">Electricite</option>
+                </select><br><br>
+
+                <button type="submit" class="btn btn-default btn-flat">Demander</button>
+
+            </form>
+        </div>
+        <!-- /.box-body -->
+
+        <!-- /.box-footer-->
+    </div>
+{% endblock %}
+
+

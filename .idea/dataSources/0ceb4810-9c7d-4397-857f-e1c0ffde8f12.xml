@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="Django default2">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="4.4">
+    <root id="1"/>
+    <schema id="2" parent="1" name="mydb">
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="3" parent="1" name="information_schema"/>
+    <schema id="4" parent="1" name="mysql"/>
+    <schema id="5" parent="1" name="performance_schema"/>
+    <schema id="6" parent="1" name="test"/>
+    <schema id="7" parent="1" name="Sonelgaz"/>
+    <table id="8" parent="2" name="A_Technique"/>
+    <table id="9" parent="2" name="Abonne"/>
+    <table id="10" parent="2" name="Admin"/>
+    <table id="11" parent="2" name="Agent"/>
+    <table id="12" parent="2" name="Commune"/>
+    <table id="13" parent="2" name="Facture"/>
+    <table id="14" parent="2" name="Formule"/>
+    <table id="15" parent="2" name="User"/>
+    <table id="16" parent="2" name="Wilaya"/>
+    <table id="17" parent="2" name="Zone"/>
+    <column id="18" parent="8" name="idA_Technique">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="19" parent="8" name="Agent_idAgent">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="20" parent="8" name="fk_A_Technique_Agent1_idx">
+      <ColNames>Agent_idAgent</ColNames>
+    </index>
+    <key id="21" parent="8" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>idA_Technique</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="22" parent="8" name="fk_Agent_Technique_User1">
+      <ColNames>idA_Technique</ColNames>
+      <RefSchemaName>mydb</RefSchemaName>
+      <RefTableName>User</RefTableName>
+      <RefColNames>idUser</RefColNames>
+    </foreign-key>
+    <foreign-key id="23" parent="8" name="fk_A_Technique_Agent1">
+      <ColNames>Agent_idAgent</ColNames>
+      <RefSchemaName>mydb</RefSchemaName>
+      <RefTableName>Agent</RefTableName>
+      <RefColNames>idAgent</RefColNames>
+    </foreign-key>
+    <column id="24" parent="9" name="idAbonne">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="25" parent="9" name="DateAbon">
+      <Position>2</Position>
+      <DataType>date|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="26" parent="9" name="Raccordement">
+      <Position>3</Position>
+      <DataType>enum(&apos;E&apos;, &apos;G&apos;, &apos;B&apos;)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="27" parent="9" name="Type">
+      <Position>4</Position>
+      <DataType>enum(&apos;P&apos;, &apos;C&apos;, &apos;U&apos;)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="28" parent="9" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>idAbonne</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="29" parent="9" name="fk_Abonne_User1">
+      <ColNames>idAbonne</ColNames>
+      <RefSchemaName>mydb</RefSchemaName>
+      <RefTableName>User</RefTableName>
+      <RefColNames>idUser</RefColNames>
+    </foreign-key>
+    <column id="30" parent="10" name="idAdmin">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="31" parent="10" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>idAdmin</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="32" parent="10" name="fk_Administrateur_User">
+      <ColNames>idAdmin</ColNames>
+      <RefSchemaName>mydb</RefSchemaName>
+      <RefTableName>User</RefTableName>
+      <RefColNames>idUser</RefColNames>
+    </foreign-key>
+    <column id="33" parent="11" name="idAgent">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="34" parent="11" name="Admin_idAdmin">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="35" parent="11" name="fk_Agent_Admin1_idx">
+      <ColNames>Admin_idAdmin</ColNames>
+    </index>
+    <key id="36" parent="11" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>idAgent</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="37" parent="11" name="fk_Agent_User1">
+      <ColNames>idAgent</ColNames>
+      <RefSchemaName>mydb</RefSchemaName>
+      <RefTableName>User</RefTableName>
+      <RefColNames>idUser</RefColNames>
+    </foreign-key>
+    <foreign-key id="38" parent="11" name="fk_Agent_Admin1">
+      <ColNames>Admin_idAdmin</ColNames>
+      <RefSchemaName>mydb</RefSchemaName>
+      <RefTableName>Admin</RefTableName>
+      <RefColNames>idAdmin</RefColNames>
+    </foreign-key>
+    <column id="39" parent="12" name="idCommune">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="40" parent="12" name="Nom">
+      <Position>2</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="41" parent="12" name="CodePostal">
+      <Position>3</Position>
+      <DataType>varchar(100)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="42" parent="12" name="Wilaya_idWilaya">
+      <Position>4</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="43" parent="12" name="fk_Commune_Wilaya1_idx">
+      <ColNames>Wilaya_idWilaya</ColNames>
+    </index>
+    <key id="44" parent="12" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>idCommune</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="45" parent="12" name="fk_Commune_Wilaya1">
+      <ColNames>Wilaya_idWilaya</ColNames>
+      <RefSchemaName>mydb</RefSchemaName>
+      <RefTableName>Wilaya</RefTableName>
+      <RefColNames>idWilaya</RefColNames>
+    </foreign-key>
+    <column id="46" parent="13" name="Abonne_idAbonne">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="47" parent="13" name="Date">
+      <Position>2</Position>
+      <DataType>date|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="48" parent="13" name="ConsoGaz">
+      <Position>3</Position>
+      <DataType>float|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="49" parent="13" name="ConsoElec">
+      <Position>4</Position>
+      <DataType>float|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="50" parent="13" name="Paye">
+      <Position>5</Position>
+      <DataType>enum(&apos;O&apos;, &apos;N&apos;)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="51" parent="13" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>Abonne_idAbonne
+Date</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="52" parent="13" name="fk_Consomation_Abonne1">
+      <ColNames>Abonne_idAbonne</ColNames>
+      <RefSchemaName>mydb</RefSchemaName>
+      <RefTableName>Abonne</RefTableName>
+      <RefColNames>idAbonne</RefColNames>
+    </foreign-key>
+    <column id="53" parent="14" name="PrixUElec">
+      <Position>1</Position>
+      <DataType>float|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="54" parent="14" name="PrixUGaz">
+      <Position>2</Position>
+      <DataType>float|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="55" parent="14" name="TVA">
+      <Position>3</Position>
+      <DataType>float|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="56" parent="14" name="Date">
+      <Position>4</Position>
+      <DataType>date|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="57" parent="15" name="idUser">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="58" parent="15" name="Nom">
+      <Position>2</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="59" parent="15" name="Prenom">
+      <Position>3</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="60" parent="15" name="Pseudo">
+      <Position>4</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="61" parent="15" name="eMail">
+      <Position>5</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="62" parent="15" name="MotDePasse">
+      <Position>6</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="63" parent="15" name="Adresse_idAdresse">
+      <Position>7</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="64" parent="15" name="Type">
+      <Position>8</Position>
+      <DataType>enum(&apos;C&apos;, &apos;SU&apos;, &apos;A&apos;, &apos;AT&apos;)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="65" parent="15" name="fk_User_Adresse1_idx">
+      <ColNames>Adresse_idAdresse</ColNames>
+    </index>
+    <key id="66" parent="15" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>idUser</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="67" parent="15" name="fk_User_Adresse1">
+      <ColNames>Adresse_idAdresse</ColNames>
+      <RefSchemaName>mydb</RefSchemaName>
+      <RefTableName>Adresse</RefTableName>
+      <RefColNames>idAdresse</RefColNames>
+    </foreign-key>
+    <column id="68" parent="16" name="idWilaya">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="69" parent="16" name="Nom">
+      <Position>2</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="70" parent="16" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>idWilaya</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="71" parent="17" name="Wilaya_idWilaya">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="72" parent="17" name="Commune_idCommune">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="73" parent="17" name="Id">
+      <Position>3</Position>
+      <DataType>varchar(45)|0</DataType>
+    </column>
+    <index id="74" parent="17" name="fk_Wilaya_has_Commune_Commune1_idx">
+      <ColNames>Commune_idCommune</ColNames>
+    </index>
+    <index id="75" parent="17" name="fk_Wilaya_has_Commune_Wilaya1_idx">
+      <ColNames>Wilaya_idWilaya</ColNames>
+    </index>
+    <key id="76" parent="17" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>Wilaya_idWilaya
+Commune_idCommune</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="77" parent="17" name="fk_Wilaya_has_Commune_Wilaya1">
+      <ColNames>Wilaya_idWilaya</ColNames>
+      <RefSchemaName>mydb</RefSchemaName>
+      <RefTableName>Wilaya</RefTableName>
+      <RefColNames>idWilaya</RefColNames>
+    </foreign-key>
+    <foreign-key id="78" parent="17" name="fk_Wilaya_has_Commune_Commune1">
+      <ColNames>Commune_idCommune</ColNames>
+      <RefSchemaName>mydb</RefSchemaName>
+      <RefTableName>Commune</RefTableName>
+      <RefColNames>idCommune</RefColNames>
+    </foreign-key>
+  </database-model>
+</dataSource>

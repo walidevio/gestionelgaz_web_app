@@ -1,0 +1,14 @@
+{% extends 'adminlte/base.html' %}
+
+
+{% block nav_sidebar %}
+    {% if is_employee %}
+            {% include 'adminlte/lib/_main_sidebar_e.html' %}
+        {% else %}
+        {% include 'adminlte/lib/_main_sidebar.html' %}
+    {% endif %}
+{% endblock nav_sidebar %}
+
+
+
+

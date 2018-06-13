@@ -1,0 +1,64 @@
+walidapp
+22051960Password
+
+TODO
+http404 of github (404.html)
+
+{% block nav_sidebar %}
+    {% block nav_links_ul %}
+        {{ block.super }}
+    {% if is_employee %}
+        {% block nav_links %}
+            {{ block.super }}
+            <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-wrench"></i> <span>WORK</span>
+                        <span class="pull-right-container">
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li>
+                            <a href="/work_reclam/">
+                                <i class="fa fa-wrench"></i>Reclamations
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/dem_racc/">
+                                <i class="fa fa-wrench"></i>Raccordements
+                            </a>
+                        </li>
+                    </ul>
+            </li>
+
+        {% endblock nav_links %}
+    {% endif %}
+        {% endblock nav_links_ul %}
+{% endblock nav_sidebar %}
+
+factures/<int:id_facture>/
+
+                </li>
+                <li>
+                    <b>Montant A Payer TTC </b>(cheque, virment, en ligne) : <!--montant ttc-->
+                </li>
+                <li>
+                    <b>Droit De Timbre : </b><!--droit de timbre-->
+                </li>
+                <li>
+                    <b>Montant A Payer En Espece : </b> <!--ttc-droit-->
+                </li>
+            </ul>
+
+
+            <ul>
+                <li>
+                    <b>Montant A Payer TTC </b>(cheque, virment, en ligne) : {{ facture.get_montant }}
+                </li>
+                <li>
+                    <b>Droit De Timbre : </b>16.00
+                </li>
+                <li>
+                    <b>Montant A Payer En Espece : </b> {{ facture.get_montant_espece }}
+                </li>
+            </ul>

@@ -1,0 +1,58 @@
+{% extends 'home.html' %}
+
+{% block content %}
+    <!-- Default box -->
+{% for foo in rec %}
+
+
+<div class="box">
+        <div class="box-header with-border">
+            <h3 class="box-title"><i class="fa fa-exclamation-triangle"></i><span>{{ foo.get_type_display }}</span> </h3>
+
+            <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip"
+                        title="Collapse">
+                    <i class="fa fa-minus"></i></button>
+            </div>
+        </div>
+        <div class="box-body">
+            <ul>
+                <li><b>Address : </b>{{ foo.address }}</li>
+                <li><b>Description : </b>{{ foo.texte }}</li>
+            </ul>
+        </div>
+        <!-- /.box-body -->
+        <div class="box-footer">
+
+            {# work to do here "btn" #}
+            <form method="post">
+                {% csrf_token %}
+                <input type="hidden" name="id_reclamation" value="{{ foo.pk }}">
+            <button class="btn btn-flat btn-default" type="submit">
+                <i class="fa fa-check-circle"></i><span>Prendre En Charge</span></button>
+            </form>
+        </div>
+    </div>
+    {% empty %}
+       <div class="box">
+        <div class="box-header with-border">
+            <h3 class="box-title">Info</h3>
+
+            <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip"
+                        title="Collapse">
+                    <i class="fa fa-minus"></i></button>
+            </div>
+        </div>
+        <div class="box-body">
+            <p><b>Pas De Travail Pour Vous!! Merci.</b></p>
+        </div>
+        <!-- /.box-body -->
+
+        <!-- /.box-footer-->
+    </div>
+
+
+    {% endfor %}
+        <!-- /.box -->
+{% endblock %}

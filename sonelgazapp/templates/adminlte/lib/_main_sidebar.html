@@ -1,0 +1,37 @@
+{% extends 'adminlte/lib/_main_sidebar.html' %}
+
+
+
+{% block nav_links_ul %}
+        <ul class="sidebar-menu">
+            {% block nav_links_outer %}
+            <li class="header">{% block nav_heading %}MAIN NAVIGATION{% endblock %}</li>
+
+
+                {% block nav_links %}
+    <li>
+        <a href="/reclamation/">
+            <i class="fa fa-exclamation-triangle"></i> <span>Reclamer</span>
+        </a>
+    </li>
+    <li>
+        <a href="/factures/">
+            <i class="fa fa-bitcoin"></i> <span>Facture</span>
+        </a>
+    </li>
+    <li>
+        <a href="/demande_rac/">
+            <i class="fa fa-link"></i> <span>Raccordement</span>
+        </a>
+    </li>
+    <li>
+        <a href="/carte/">
+            <i class="fa fa-money"></i> <span>Ajouter Meth. de Payement</span>
+        </a>
+    </li>
+                {% endblock nav_links %}
+
+
+        {% endblock nav_links_outer %}
+
+        {% endblock nav_links_ul %}
